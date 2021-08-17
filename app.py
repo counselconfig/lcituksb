@@ -62,8 +62,6 @@ soup = BeautifulSoup(content, features="html.parser")
 clean_content = soup.get_text()
 text = clean_content
 
-
-#text = "When Sebastian and Thrun started working on self-driving cars or at Google if in 2007, then few people outside of the company took him seriously."
 nlp = spacy.load(r".\model")
 doc = nlp(text)
 print("Entities:", doc.ents)
