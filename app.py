@@ -8,7 +8,7 @@ from spacy import displacy
 import json
 import dash_core_components as dcc
 
-# Initialize the application
+# Init
 app = dash.Dash(__name__)
 
 DEFAULT_LABEL_COLORS = {"(P ∧ Q)":"lightblue", "(¬ P)":"lightgreen","(P ∨ Q)":"orange","(P ← Q)":"purple","(P ↓ Q)":"light red","(P → Q)":"grey"}
@@ -67,11 +67,11 @@ doc = nlp(text)
 print("Entities:", doc.ents)
 #displacy.render(doc, style="ent", options=options)
 
-# define de app
+# define app
 app.layout = html.Div(
     children=render(doc)
 )
 
-# Run the app
+# Run app
 if __name__ == "__main__":
     app.run_server(debug=True)
