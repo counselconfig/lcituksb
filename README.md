@@ -1,4 +1,4 @@
-## Logical Connectives in the Statute Book
+## Logical Connectives in the UK Statute Book
 
 ### Installation
 
