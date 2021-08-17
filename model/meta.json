@@ -1,0 +1,34 @@
+{
+  "lang":"en",
+  "name":"model",
+  "version":"0.0.0",
+  "spacy_version":">=2.3.1",
+  "description":"",
+  "author":"",
+  "email":"",
+  "url":"",
+  "license":"",
+  "spacy_git_version":"554291558",
+  "vectors":{
+    "width":0,
+    "vectors":0,
+    "keys":0,
+    "name":"spacy_pretrained_vectors"
+  },
+  "pipeline":[
+    "ner"
+  ],
+  "factories":{
+    "ner":"ner"
+  },
+  "labels":{
+    "ner":[
+      "(P \u2190 Q)",
+      "(P \u2192 Q)",
+      "(P \u2193 Q)",
+      "(P \u2227 Q)",
+      "(P \u2228 Q)",
+      "(\u00ac P)"
+    ]
+  }
+}
