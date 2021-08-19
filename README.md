@@ -1,6 +1,6 @@
 ## Logical Connectives in the UK Statute Book
 
-### Please do _not_ fork this repository
+### Please do not fork this repository
 
 ### Installation
 
