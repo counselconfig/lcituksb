@@ -1,15 +1,34 @@
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output, State
 import requests
 import re
 from bs4 import BeautifulSoup
-import dash
-import dash_html_components as html
 import spacy
 from spacy import displacy 
 import json
-import dash_core_components as dcc
 
-# Init
-app = dash.Dash(__name__)
+app = dash.Dash()
+
+app.layout = html.Div([
+    dcc.Dropdown(
+    id='number-in',
+    options=[
+        {'label': 'Metropolitan Police Act 1839', 'value': 'MPA'},
+        {'label': 'Easter Act 1928', 'value': 'EA'},
+        {'label': 'Parliament (Qualification of Women) Act 1918', 'value': 'PQWA'}
+    ],
+    placeholder="Select a statute",
+    ),
+    html.Button(
+        id='submit-button',
+        n_clicks=0,
+        children='Submit',
+        style={'fontSize':28}
+    ),
+    html.Div(id='number-out')
+])
 
 DEFAULT_LABEL_COLORS = {"(P ∧ Q)":"lightblue", "(¬ P)":"lightgreen","(P ∨ Q)":"orange","(P ← Q)":"purple","(P ↓ Q)":"light red","(P → Q)":"grey"}
 
@@ -55,23 +74,28 @@ def render(doc):
     children.append(doc.text[last_idx:])
     return children
 
-data = requests.get("https://www.legislation.gov.uk/ukpga/Geo5/8-9/47/enacted/data.html") 
-content = data.content
+def ner(url):
+    data = requests.get(url) 
+    content = data.content
+    soup = BeautifulSoup(content, features="html.parser")
+    clean_content = soup.get_text()
+    text = clean_content
+    nlp = spacy.load(r".\model")
+    doc = nlp(text)
+    return render(doc)
 
-soup = BeautifulSoup(content, features="html.parser")
-clean_content = soup.get_text()
-text = clean_content
+@app.callback(
+    Output('number-out', 'children'),
+    [Input('submit-button', 'n_clicks')],
+    [State('number-in', 'value')])
+def output(n_clicks, number):
+    if number == 'PQWA':
+        url = "https://www.legislation.gov.uk/ukpga/Geo5/8-9/47/enacted/data.html"
+    elif number == 'EA':
+        url = "https://www.legislation.gov.uk/ukpga/Geo5/18-19/35/enacted/data.html"
+    elif number == 'MPA':
+        url = "https://www.legislation.gov.uk/ukpga/Vict/2-3/47/enacted/data.html"
+    return ner(url)
 
-nlp = spacy.load(r".\model")
-doc = nlp(text)
-print("Entities:", doc.ents)
-#displacy.render(doc, style="ent", options=options)
-
-# define app
-app.layout = html.Div(
-    children=render(doc)
-)
-
-# Run app
-if __name__ == "__main__":
-    app.run_server(debug=True)
+if __name__ == '__main__':
+    app.run_server()
