@@ -17,7 +17,7 @@ import dash_loading_spinners as dls
 
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.UNITED]) # theme needed for thr spinner graphic
-
+server = app.server #render gunicorn command
 #proxies = {'https': 'http://x.x.x.x:x'}
 #session = requests.Session()
 #session.proxies.update(proxies)
@@ -586,4 +586,4 @@ def update_datatable(n_clicks,csv_file):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8056)
+    app.run_server(debug=False, port=8056)
