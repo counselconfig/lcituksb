@@ -589,4 +589,4 @@ def update_datatable(n_clicks,csv_file):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8081)
+    app.run_server(debug=False, port=10000)
