@@ -347,7 +347,7 @@ def wordcount(text):
 
 
 def ner(text):
-	nlp = spacy.load('/model')
+	nlp = spacy.load(r'/model')
 	doc = nlp(text)
 	return doc
 
