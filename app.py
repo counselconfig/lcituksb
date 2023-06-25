@@ -20,7 +20,7 @@ import dash_loading_spinners as dls
 
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.UNITED]) # theme needed for thr spinner graphic
-server = app.server #render gunicorn command
+server = app.server # Expose Flask instance for gunicorn command 
 #proxies = {'https': 'http://x.x.x.x:x'}
 #session = requests.Session()
 #session.proxies.update(proxies)
