@@ -477,7 +477,7 @@ def plot3(selectedVariable2, stats):
 	print ('q is ' + str (q))
 	#diction = {'The Parliament (Qualification of Women) Act 1918': q1, 'Easter Act 1928': q2}
 	
-	global df
+	global df # used for the datatable
 	df = pd.DataFrame({'Statutes': selectedVariable2, 'Complexity index': q }) # https://www.datasciencelearner.com/how-to-create-a-bar-chart-from-a-dataframe-in-python/   # remove [] to get rid of ValueError: All arrays must be of the same length
 	df = df.round(3) # https://www.reddit.com/r/learnpython/comments/995n7z/pandas_round_not_working/
 	df = df.sort_values('Complexity index', ascending=False)
