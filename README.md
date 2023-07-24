@@ -7,9 +7,3 @@
  4. Make a virtual envronment inside 'lcituksb': ```python -m venv venv``` and then run ```.\venv\Scripts\activate.bat``` to enter it
  5. Install the libraries for the virtual environment using ```pip install -r requirements.txt``` 
  6. Run ```python app.py``` 
-
-
-### Dash resources
- - Dash documentation https://dash.plotly.com/
- - Videos https://www.youtube.com/results?search_query=dash+plotly
- - Gallery https://dash-gallery.plotly.host/Portal/ 
