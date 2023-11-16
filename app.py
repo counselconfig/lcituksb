@@ -104,7 +104,7 @@ app.layout = html.Div(children=[
 											html.I('"Propositions are like the sticks in a Tinker Toy set; without the round spools or connector blocks, you can do very little with the sticks. Operators are like the connector blocks; by adding them to propositions we get more complex structures..."'), 
 											html.P("- Rudy Engholm, 'Logic and Laws: Relief from Statutory Obfuscation'"),
 											html.Br(),
-											html.P(['A report on the development of the NER model used for this web app is ', html.A('here', href='https://lcituksb.s3.us-east-2.amazonaws.com/index.htm', target='_blank')]),#https://community.plotly.com/t/how-to-make-a-linebreak-in-html-p/28317	
+											#html.P(['A report on the development of the NER model used for this web app is ', html.A('here', href='https://lcituksb.s3.us-east-2.amazonaws.com/index.htm', target='_blank')]),#https://community.plotly.com/t/how-to-make-a-linebreak-in-html-p/28317	
 										],
 									),
 								])
